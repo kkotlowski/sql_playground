@@ -76,6 +76,7 @@ func execute_query_companies(db *sql.DB, query string, c *gin.Context) {
 
 	for rows.Next() {
 		err := rows.Scan(&company.ID, &company.MainBranch, &company.Branch, &company.Name, &company.Website, &company.Mail, &company.PhoneNumber)
+
 		query_result = append(query_result, company)
 		if err != nil {
 			c.String(http.StatusBadRequest, err.Error())
