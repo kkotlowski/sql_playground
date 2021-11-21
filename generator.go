@@ -124,5 +124,8 @@ func main() {
 	router := gin.Default()
 	router.GET("/companies/:query", execute_query_on_companies)
 	router.GET("/webscraper/", webscrape)
+	router.GET("/webscraper/webpage/:webpage/tag/:tag")
+	router.GET("/webscraper/webpage/:webpage/id/:id")
+	router.GET("/webscraper/webpage/:webpage/class/:class")
 	router.Run("localhost:8080")
 }
