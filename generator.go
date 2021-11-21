@@ -87,12 +87,7 @@ func execute_query_companies(db *sql.DB, query string, c *gin.Context) {
 		c.String(http.StatusBadRequest, err.Error())
 	}
 
-	json, err := json.Marshal(query_result)
-	if err != nil {
-		c.String(http.StatusBadRequest, err.Error())
-	}
-
-	c.String(http.StatusOK, string(json))
+	c.IndentedJSON(http.StatusOK, query_result)
 }
 
 func execute_query_on_companies(c *gin.Context) {
@@ -111,7 +106,7 @@ func execute_query_on_companies(c *gin.Context) {
 }
 
 func webscrape(c *gin.Context) {
-	url := "https://panoramafirm.pl"
+	url := "https://www.wunderground.com/history/daily/EPGD/date/2021-11-20"
 	resp, err := http.Get(url)
 	if err != nil {
 		c.String(http.StatusBadRequest, "Couldn't make request.")
